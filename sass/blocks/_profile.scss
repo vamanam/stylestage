@@ -1,9 +1,11 @@
 .profile {
+  @include soft-panel;
   width: 95vw;
   max-width: 80ch;
   margin: 1rem auto 10vh;
   padding: 1.25rem;
   z-index: 1;
+  border-radius: var(--border-radius);
 
   h4 {
     margin: 0;
@@ -14,7 +16,7 @@
   .container {
     display: grid;
     justify-items: center;
-    grid-gap: 1rem;
+    gap: 1rem;
 
     > a {
       min-height: 2em;
@@ -58,9 +60,8 @@
     bottom: 2vmin;
     max-width: 30ch;
     margin-bottom: 0;
-    border-radius: var(--border-radius);
     background-color: var(--color-light);
-    box-shadow: 0 2px 5px rgba(color(primary), 0.15);
+    box-shadow: 0 2px 5px rgba(90, 40, 255, 0.15);
 
     ul {
       justify-content: unset;

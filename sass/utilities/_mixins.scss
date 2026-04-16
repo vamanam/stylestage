@@ -1,0 +1,20 @@
+@mixin logomark {
+  display: inline-grid;
+  min-height: var(--logomark-height);
+  padding: var(--logomark-padding);
+  border: 0.16em solid var(--color-primary);
+  box-shadow: 0.16em 0.16em var(--color-secondary);
+  place-content: center;
+  border-radius: 0.25em;
+}
+
+@mixin section-card {
+  position: relative;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+@mixin soft-panel {
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 10px 25px rgba(90, 40, 255, 0.08);
+}

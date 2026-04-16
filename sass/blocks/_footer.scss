@@ -1,0 +1,113 @@
+.page-footer {
+  --logomark-height: 2em;
+  --logomark-padding: 0;
+
+  position: relative;
+  padding: 3rem 1rem;
+  background-color: var(--color-primary);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='72' viewBox='0 0 36 72'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23d2fbf7' fill-opacity='1'%3E%3Cpath d='M2 6h12L8 18 2 6zm18 36h12l-6 12-6-12z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: center -34px;
+  color: var(--color-light);
+
+  /* 🔥 S CONTAINER */
+  &::before {
+    @include logomark;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 2em;
+
+    transform: translate(-50%, -100%);
+    transform-origin: center bottom;
+
+    background: linear-gradient(135deg, #ffffff, #eaf6ff);
+    color: var(--color-primary);
+    font-size: 3rem;
+    content: "S";
+
+    border-radius: 0.15em;
+
+    box-shadow:
+      0.12em 0.12em var(--color-secondary),
+      0 10px 18px rgba(0, 0, 0, 0.2);
+
+    /* 🔥 AUTO ANIMATION */
+    animation: sFold 4s ease-in-out infinite;
+  }
+
+  /* 🔥 FOLD CORNER */
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+
+    width: 2em;
+    min-height: var(--logomark-height);
+    padding: var(--logomark-padding);
+
+    transform: translate(-50%, -100%);
+    transform-origin: top right;
+
+    background: linear-gradient(
+      135deg,
+      rgba(255,255,255,0.6) 0%,
+      rgba(255,255,255,0.6) 50%,
+      rgba(0,0,0,0.15) 50%,
+      rgba(0,0,0,0.15) 100%
+    );
+
+    clip-path: polygon(100% 0, 100% 100%, 50% 0);
+
+    opacity: 0;
+
+    /* 🔥 AUTO ANIMATION */
+    animation: foldCorner 4s ease-in-out infinite;
+  }
+
+  p:first-child {
+    margin-top: 3rem;
+    font-weight: var(--font-weight-strong);
+    letter-spacing: 0.03em;
+    text-align: center;
+  }
+
+  p a {
+    color: inherit;
+  }
+
+  ul {
+    grid-template-columns: repeat(auto-fit, minmax(12ch, auto));
+  }
+
+  .container > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* 🔥 MAIN FOLD ANIMATION */
+@keyframes sFold {
+  0%, 100% {
+    transform: translate(-50%, -100%) perspective(500px) rotateX(0deg) rotateY(0deg) scale(1);
+    border-radius: 0.15em;
+  }
+
+  50% {
+    transform: translate(-50%, -100%) perspective(500px) rotateX(20deg) rotateY(-15deg) scale(1.05);
+    border-radius: 0.4em 0.1em 0.4em 0.1em;
+  }
+}
+
+/* 🔥 CORNER FOLD VISIBILITY */
+@keyframes foldCorner {
+  0%, 100% {
+    opacity: 0;
+    transform: translate(-50%, -100%) perspective(500px) rotateX(0deg) rotateY(0deg);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -100%) perspective(500px) rotateX(20deg) rotateY(-15deg);
+  }
+}
